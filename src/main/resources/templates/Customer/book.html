@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Find Parking | GoPark</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    background:#eef2f7;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.container{
+    width:450px;
+    background:#fff;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+    overflow:hidden;
+}
+
+.header{
+    background:#005EB8;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+.header h2{
+    margin-bottom:8px;
+}
+
+.header p{
+    font-size:14px;
+    opacity:.9;
+}
+
+.content{
+    padding:35px;
+}
+
+.input-group{
+    margin-bottom:20px;
+}
+
+.input-group label{
+    display:block;
+    margin-bottom:6px;
+    font-weight:600;
+    color:#333;
+}
+
+.input-group input,
+.input-group select{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+}
+
+.input-group input:focus,
+.input-group select:focus{
+    outline:none;
+    border-color:#005EB8;
+    box-shadow:0 0 6px rgba(0,94,184,.25);
+}
+
+button{
+    width:100%;
+    padding:13px;
+    border:none;
+    border-radius:8px;
+    background:#005EB8;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:#004a91;
+}
+
+.footer{
+    text-align:center;
+    margin-top:20px;
+}
+
+.footer a{
+    text-decoration:none;
+    color:#005EB8;
+    font-weight:bold;
+}
+
+.footer a:hover{
+    text-decoration:underline;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h2>Find Parking</h2>
+        <p>Search available parking slots near your location.</p>
+    </div>
+
+    <div class="content">
+
+        <form th:action="@{/customer/land}" method="post">
+
+            <!-- Vehicle Type -->
+            <div class="input-group">
+                <label>Vehicle Type</label>
+
+                <select name="vehicleType" required>
+                    <option value="">-- Select Vehicle Type --</option>
+                    <option value="Bike">🏍 Bike</option>
+                    <option value="Car">🚗 Car</option>
+                    <option value="Bus">🚌 Bus</option>
+                </select>
+
+            </div>
+
+            <!-- City -->
+            <div class="input-group">
+                <label>City</label>
+
+                <input type="text"
+                       id="city"
+                       name="city"
+                       placeholder="Enter City Name"
+                       required>
+
+            </div>
+            <button type="submit">
+                🔍 Search Parking
+            </button>
+
+        </form>
+
+        <div class="footer">
+            <a href="/customer/home">← Back to Home</a>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+// Allow only letters and spaces for city
+document.getElementById("city").addEventListener("input", function () {
+    this.value = this.value.replace(/[^a-zA-Z ]/g, '');
+});
+
+// Prevent selecting a past date and time
+document.addEventListener("DOMContentLoaded", function () {
+    const bookingTime = document.getElementById("bookingTime");
+
+    const now = new Date();
+    now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+
+    bookingTime.min = now.toISOString().slice(0, 16);
+});
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Manage Lands | GoPark</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    background:#eef2f7;
+    padding:40px;
+}
+
+h2{
+    text-align:center;
+    color:#005EB8;
+    margin-bottom:30px;
+}
+
+table{
+    width:90%;
+    margin:auto;
+    border-collapse:collapse;
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
+}
+
+th{
+    background:#005EB8;
+    color:white;
+    padding:15px;
+}
+
+td{
+    padding:15px;
+    text-align:center;
+    border-bottom:1px solid #ddd;
+}
+
+tr:hover{
+    background:#f7f9fc;
+}
+
+.btn{
+    text-decoration:none;
+    color:white;
+    padding:8px 15px;
+    border-radius:6px;
+    font-size:14px;
+    margin:2px;
+}
+
+.update{
+    background:#28a745;
+}
+
+.update:hover{
+    background:#218838;
+}
+
+.delete{
+    background:#dc3545;
+}
+
+.delete:hover{
+    background:#bb2d3b;
+}
+
+.back{
+    margin-top:30px;
+    text-align:center;
+}
+
+.back a{
+    text-decoration:none;
+    color:#005EB8;
+    font-weight:bold;
+}
+
+.back a:hover{
+    text-decoration:underline;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>My Parking Lands</h2>
+
+<table>
+
+<tr>
+    <th>Partner</th>
+    <th>Land Name</th>
+    <th>City</th>
+    <th>Address</th>
+    <th>Actions</th>
+</tr>
+
+<tr th:each="p : ${data}">
+
+    <td th:text="${p.partner.partnerName}"></td>
+
+    <td th:text="${p.landName}"></td>
+
+    <td th:text="${p.city}"></td>
+
+    <td th:text="${p.address}"></td>
+
+    <td>
+
+        <a class="btn update"
+           th:href="@{/land/update(id=${p.landId})}">
+            Update
+        </a>
+
+        <a class="btn delete"
+           th:href="@{/land/delete(id=${p.landId})}"
+           onclick="return confirm('Are you sure you want to delete this land?');">
+            Delete
+        </a>
+
+		<a class="btn delete"
+		          th:href="@{/land/review(id=${p.landId})}">
+		           reviews
+		       </a>
+		
+    </td>
+
+</tr>
+
+</table>
+
+<div class="back">
+    <a th:href="@{/land/lands}">
+        ← Back 
+    </a>
+</div>
+
+<div class="back">
+    <a th:href="@{/partner/Home}">
+        ← Back to Profile
+    </a>
+</div>
+
+</body>
+</html>

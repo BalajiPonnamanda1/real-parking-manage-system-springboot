@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Booking Cancelled | GoPark</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    background:#eef2f7;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.container{
+    width:500px;
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+}
+
+.header{
+    background:#d32f2f;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+.icon{
+    font-size:60px;
+    margin-bottom:10px;
+}
+
+.content{
+    padding:35px;
+    text-align:center;
+}
+
+.message{
+    color:#555;
+    font-size:17px;
+    line-height:1.7;
+    margin-bottom:25px;
+}
+
+.info{
+
+    background:#fff3f3;
+    border-left:5px solid #d32f2f;
+    padding:18px;
+    border-radius:8px;
+    color:#444;
+    text-align:left;
+    margin-bottom:30px;
+
+}
+
+.btn{
+
+    display:inline-block;
+    text-decoration:none;
+    background:#005EB8;
+    color:white;
+    padding:13px 30px;
+    border-radius:8px;
+    font-weight:bold;
+    transition:.3s;
+
+}
+
+.btn:hover{
+
+    background:#004a91;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <div class="icon">❌</div>
+
+        <h2>Booking Cancelled</h2>
+
+    </div>
+
+    <div class="content">
+
+        <p class="message">
+
+            Your parking slot has been cancelled successfully.
+
+        </p>
+
+        <div class="info">
+
+            <strong>Note:</strong>
+
+            <br><br>
+
+            • This booking is no longer valid.
+
+            <br>
+
+            • The reserved parking slot has been released.
+
+            <br>
+
+            • You can book another parking slot anytime.
+
+        </div>
+
+        <a th:href="@{/customer/home}" class="btn">
+
+            🏠 Back to Home
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

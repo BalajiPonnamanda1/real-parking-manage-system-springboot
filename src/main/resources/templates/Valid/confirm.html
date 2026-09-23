@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Check-In Successful | GoPark</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    background:#eef2f7;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    width:450px;
+    background:#fff;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+    overflow:hidden;
+    text-align:center;
+}
+
+.header{
+    background:#00A651;
+    color:white;
+    padding:30px;
+}
+
+.icon{
+    font-size:70px;
+    margin-bottom:10px;
+}
+
+.header h2{
+    margin-bottom:8px;
+}
+
+.content{
+    padding:35px;
+}
+
+.content p{
+    color:#555;
+    font-size:16px;
+    margin-bottom:25px;
+    line-height:1.6;
+}
+
+.btn{
+    display:block;
+    width:100%;
+    padding:14px;
+    text-decoration:none;
+    border-radius:8px;
+    font-size:16px;
+    font-weight:bold;
+    color:white;
+    margin-bottom:15px;
+    transition:.3s;
+}
+
+.home{
+    background:#005EB8;
+}
+
+.home:hover{
+    background:#004a91;
+}
+
+.validation{
+    background:#6c757d;
+}
+
+.validation:hover{
+    background:#5a6268;
+}
+
+.footer{
+    border-top:1px solid #eee;
+    padding:15px;
+    color:#777;
+    font-size:13px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <div class="icon">✅</div>
+        <h2>Check-In Successful</h2>
+    </div>
+
+    <div class="content">
+
+        <p>
+            OTP verified successfully.<br>
+            The customer has been checked in and parking has started.
+        </p>
+
+        <a href="/valid/" class="btn validation">
+            Verify Another Customer
+        </a>
+
+        <a href="/partner/Home" class="btn home">
+            Go to Home
+        </a>
+
+    </div>
+
+    <div class="footer">
+        Thank you for using GoPark Parking Management System
+    </div>
+
+</div>
+
+</body>
+</html>

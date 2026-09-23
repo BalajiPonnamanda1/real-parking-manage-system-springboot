@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Book Parking Slot | GoPark</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    background:#eef2f7;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.container{
+    width:450px;
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+}
+
+.header{
+    background:#005EB8;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+.header h2{
+    margin-bottom:8px;
+}
+
+.header p{
+    opacity:.9;
+}
+
+.content{
+    padding:35px;
+}
+
+.input-group{
+    margin-bottom:20px;
+}
+
+.input-group label{
+    display:block;
+    margin-bottom:6px;
+    font-weight:600;
+    color:#333;
+}
+
+.input-group input{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+}
+
+.input-group input:focus{
+    outline:none;
+    border-color:#005EB8;
+    box-shadow:0 0 6px rgba(0,94,184,.25);
+}
+
+.note{
+    background:#eef6ff;
+    border-left:4px solid #005EB8;
+    padding:15px;
+    border-radius:8px;
+    color:#444;
+    font-size:14px;
+    line-height:1.6;
+    margin-bottom:20px;
+}
+
+button{
+    width:100%;
+    padding:13px;
+    border:none;
+    border-radius:8px;
+    background:#005EB8;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:#004a91;
+}
+
+.footer{
+    text-align:center;
+    margin-top:20px;
+}
+
+.footer a{
+    text-decoration:none;
+    color:#005EB8;
+    font-weight:bold;
+}
+
+.footer a:hover{
+    text-decoration:underline;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <h2>Book Parking Slot</h2>
+
+        <p>Complete your booking to reserve your parking space.</p>
+
+    </div>
+
+    <div class="content">
+
+        <form th:action="@{/slotValid/otp}" method="post">
+
+            <!-- Vehicle Number -->
+            <div class="input-group">
+
+                <label>Vehicle Number</label>
+
+                <input
+                    type="text"
+                    id="vehicleNumber"
+                    name="vehicleNumber"
+                    placeholder="Example: AP39AB1234"
+                    maxlength="10"
+                    required>
+
+            </div>
+
+            <!-- Booking Date -->
+            <div class="input-group">
+
+                <label>Booking Date</label>
+
+                <input
+                    type="date"
+                    id="bookingDate"
+                    name="bookingDate"
+                    required>
+
+            </div>
+
+            <!-- Booking Time -->
+            <div class="input-group">
+
+                <label>Booking Time</label>
+
+                <input
+                    type="time"
+                    id="bookingTime"
+                    name="bookingTime"
+                    required>
+
+            </div>
+
+            <input
+                type="hidden"
+                name="vehicleId"
+                th:value="${vehicleId}">
+
+            <div class="note">
+
+                <strong>Booking Instructions</strong>
+
+                <br><br>
+
+                • Enter your vehicle registration number correctly.
+
+                <br>
+
+                • Select your booking date and time.
+
+                <br>
+
+                • Reach the parking location within <strong>1 hour</strong> of your booking time.
+
+                <br>
+
+                • After booking, an OTP will be generated.
+
+                <br>
+
+                • Show the OTP to the parking owner during check-in.
+
+            </div>
+
+            <button type="submit">
+                🚗 Book Slot
+            </button>
+
+        </form>
+
+        <div class="footer">
+
+            <a href="javascript:history.back()">
+                ← Back
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+// Convert vehicle number to uppercase
+document.getElementById("vehicleNumber").addEventListener("input", function(){
+
+    this.value = this.value.toUpperCase();
+
+});
+
+// Set minimum booking date to today
+document.addEventListener("DOMContentLoaded", function(){
+
+    const bookingDate = document.getElementById("bookingDate");
+
+    const today = new Date().toISOString().split("T")[0];
+
+    bookingDate.min = today;
+
+});
+
+</script>
+
+</body>
+
+</html>

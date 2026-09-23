@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Select Booking | GoPark</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    background:#eef2f7;
+    padding:40px;
+}
+
+.container{
+
+    width:95%;
+    max-width:1100px;
+    margin:auto;
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+
+}
+
+.header{
+
+    background:#005EB8;
+    color:white;
+    text-align:center;
+    padding:25px;
+
+}
+
+.header h2{
+
+    margin-bottom:8px;
+
+}
+
+.header p{
+
+    opacity:.9;
+
+}
+
+table{
+
+    width:100%;
+    border-collapse:collapse;
+
+}
+
+th{
+
+    background:#005EB8;
+    color:white;
+    padding:14px;
+
+}
+
+td{
+
+    padding:14px;
+    text-align:center;
+    border-bottom:1px solid #ddd;
+
+}
+
+tr:nth-child(even){
+
+    background:#f8fbff;
+
+}
+
+tr:hover{
+
+    background:#eef6ff;
+
+}
+
+.review-btn{
+
+    text-decoration:none;
+    background:#00A651;
+    color:white;
+    padding:8px 18px;
+    border-radius:6px;
+    font-weight:bold;
+    transition:.3s;
+
+}
+
+.review-btn:hover{
+
+    background:#008c45;
+
+}
+
+.empty{
+
+    text-align:center;
+    padding:30px;
+    color:#666;
+
+}
+
+.footer{
+
+    text-align:center;
+    padding:25px;
+
+}
+
+.home-btn{
+
+    text-decoration:none;
+    background:#005EB8;
+    color:white;
+    padding:12px 25px;
+    border-radius:8px;
+    font-weight:bold;
+
+}
+
+.home-btn:hover{
+
+    background:#004a91;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<h2>Completed Bookings</h2>
+
+<p>Select a parking booking to write your review.</p>
+
+</div>
+
+<table>
+
+<tr>
+
+<th>Owner</th>
+<th>Parking Land</th>
+<th>City</th>
+<th>Action</th>
+
+</tr>
+
+<tr th:if="${#lists.isEmpty(data)}">
+
+<td colspan="4" class="empty">
+
+No completed bookings available for review.
+
+</td>
+
+</tr>
+
+<tr th:each="c : ${data}">
+
+<td th:text="${c.land.partner.partnerName}"></td>
+
+<td th:text="${c.land.landName}"></td>
+
+<td th:text="${c.land.city}"></td>
+
+<td>
+
+<a class="review-btn"
+   th:href="@{/review/addReview(id=${c.bookingId})}">
+
+✍ Write Review
+
+</a>
+
+</td>
+
+</tr>
+
+</table>
+
+<div class="footer">
+
+<a href="/customer/home" class="home-btn">
+
+🏠 Home
+
+</a>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

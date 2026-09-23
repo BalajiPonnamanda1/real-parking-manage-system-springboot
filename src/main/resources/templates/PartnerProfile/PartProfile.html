@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Partner Profile | GoPark</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background: #eef2f7;
+}
+
+.header {
+    background: #005EB8;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.container {
+    width: 600px;
+    margin: 40px auto;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.1);
+    overflow: hidden;
+}
+
+.profile-top {
+    background: #005EB8;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.profile-icon {
+    font-size: 70px;
+    margin-bottom: 10px;
+}
+
+.info {
+    padding: 30px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.label {
+    font-weight: bold;
+    color: #555;
+}
+
+.value {
+    color: #222;
+    text-align: right;
+}
+
+/* Password Section */
+
+.password-value {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#passwordText {
+    display: none;
+    font-weight: bold;
+    color: #222;
+}
+
+.show-password {
+    border: none;
+    background: #28a745;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.show-password:hover {
+    background: #218838;
+}
+
+/* Buttons */
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.buttons a {
+    flex: 1;
+    text-align: center;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.edit {
+    background: #005EB8;
+}
+
+.edit:hover {
+    background: #004a91;
+}
+
+.password {
+    background: #28a745;
+}
+
+.password:hover {
+    background: #218838;
+}
+
+.delete {
+    background: #dc3545;
+}
+
+.delete:hover {
+    background: #bb2d3b;
+}
+
+.back {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #005EB8;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back:hover {
+    text-decoration: underline;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Partner Profile</h1>
+</div>
+
+<div class="container">
+
+    <div class="card">
+
+        <!-- Profile Header -->
+        <div class="profile-top">
+
+            <div class="profile-icon">👤</div>
+
+            <h2 th:text="${data.partnerName}"></h2>
+
+        </div>
+
+        <!-- Profile Information -->
+        <div class="info">
+
+            <div class="row">
+                <span class="label">Partner ID</span>
+                <span class="value"
+                      th:text="${data.partnerId}">
+                </span>
+            </div>
+
+            <div class="row">
+                <span class="label">Mobile Number</span>
+                <span class="value"
+                      th:text="${data.mobileNumber}">
+                </span>
+            </div>
+
+            <div class="row">
+                <span class="label">Total Lands</span>
+                <span class="value"
+                      th:text="${count}">
+                </span>
+            </div>
+
+            <!-- Password -->
+            <div class="row">
+
+                <span class="label">Password</span>
+
+                <div class="password-value">
+
+                    <!-- Initially hidden -->
+                    <span id="passwordText"
+                          th:text="${data.password}">
+                    </span>
+
+                    <button type="button"
+                            id="passwordButton"
+                            class="show-password"
+                            onclick="togglePassword()">
+                        Show Password
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="buttons">
+
+                <a class="edit"
+                   th:href="@{/partner/update}">
+                    Edit Profile
+                </a>
+
+                <a class="delete"
+                   th:href="@{/partner/delete}"
+                   onclick="return confirm('Are you sure you want to delete your account?');">
+                    Delete
+                </a>
+
+            </div>
+
+            <a class="back"
+               th:href="@{/partner/Home}">
+                ← Back to Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function togglePassword() {
+
+    let password = document.getElementById("passwordText");
+    let button = document.getElementById("passwordButton");
+
+    if (password.style.display === "none" || password.style.display === "") {
+
+        password.style.display = "inline";
+        button.innerText = "Hide Password";
+
+    } else {
+
+        password.style.display = "none";
+        button.innerText = "Show Password";
+    }
+}
+
+</script>
+
+</body>
+</html>

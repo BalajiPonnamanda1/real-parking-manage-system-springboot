@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Customer Reviews | GoPark</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    background:#eef2f7;
+    padding:40px;
+}
+
+.container{
+
+    width:95%;
+    max-width:1200px;
+    margin:auto;
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+
+}
+
+.header{
+
+    background:#005EB8;
+    color:white;
+    text-align:center;
+    padding:25px;
+
+}
+
+.header h2{
+
+    margin-bottom:8px;
+
+}
+
+.header p{
+
+    opacity:.9;
+
+}
+
+table{
+
+    width:100%;
+    border-collapse:collapse;
+
+}
+
+th{
+
+    background:#005EB8;
+    color:white;
+    padding:14px;
+
+}
+
+td{
+
+    padding:14px;
+    text-align:center;
+    border-bottom:1px solid #ddd;
+
+}
+
+tr:nth-child(even){
+
+    background:#f8fbff;
+
+}
+
+tr:hover{
+
+    background:#eef6ff;
+
+}
+
+.review{
+
+    text-align:left;
+    max-width:350px;
+    word-wrap:break-word;
+
+}
+
+.rating{
+
+    color:#ff9800;
+    font-size:18px;
+    font-weight:bold;
+
+}
+
+.no-review{
+
+    text-align:center;
+    padding:30px;
+    color:#666;
+
+}
+
+.footer{
+
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    padding:25px;
+
+}
+
+.btn{
+
+    text-decoration:none;
+    background:#005EB8;
+    color:white;
+    padding:12px 25px;
+    border-radius:8px;
+    font-weight:bold;
+    transition:.3s;
+
+}
+
+.btn:hover{
+
+    background:#004a91;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<h2>Customer Reviews</h2>
+
+<p>See what customers say about this parking location.</p>
+
+</div>
+
+<table>
+
+<tr>
+
+<th>Customer</th>
+<th>Vehicle</th>
+<th>Review</th>
+<th>Rating</th>
+
+</tr>
+
+<tr th:if="${#lists.isEmpty(data)}">
+
+<td colspan="4" class="no-review">
+No reviews available.
+</td>
+
+</tr>
+
+<tr th:each="c : ${data}">
+
+<td th:text="${c.booking.customer.customerName}"></td>
+
+<td th:text="${c.booking.vehicle.vehicleType}"></td>
+
+<td class="review" th:text="${c.review}"></td>
+
+<td class="rating">
+
+<span th:each="i : ${#numbers.sequence(1,c.rating)}">⭐</span>
+
+</td>
+
+</tr>
+
+</table>
+
+<div class="footer">
+
+<button class="btn" onclick="history.back()">
+← Back
+</button>
+
+<a href="/customer/home" class="btn">
+🏠 Home
+</a>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

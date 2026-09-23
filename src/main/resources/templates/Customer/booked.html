@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Booking Successful | GoPark</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    background:#eef2f7;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.container{
+    width:500px;
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+}
+
+.header{
+    background:#00A651;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+.header .icon{
+    font-size:60px;
+    margin-bottom:10px;
+}
+
+.header h2{
+    margin-bottom:8px;
+}
+
+.content{
+    padding:35px;
+}
+
+.message{
+    color:#555;
+    font-size:16px;
+    line-height:1.8;
+    margin-bottom:25px;
+}
+
+.message p{
+    margin-bottom:10px;
+}
+
+.otp-box{
+
+    width:170px;
+    margin:auto;
+    padding:18px;
+    border:3px dashed #005EB8;
+    border-radius:10px;
+    background:#eef6ff;
+    font-size:34px;
+    font-weight:bold;
+    color:#005EB8;
+    letter-spacing:5px;
+    text-align:center;
+    margin-bottom:25px;
+
+}
+
+.note{
+
+    background:#fff8e1;
+    color:#8a6d3b;
+    padding:15px;
+    border-radius:8px;
+    font-size:14px;
+    line-height:1.6;
+    margin-bottom:25px;
+
+}
+
+.btn{
+
+    display:inline-block;
+    text-decoration:none;
+    background:#005EB8;
+    color:white;
+    padding:13px 28px;
+    border-radius:8px;
+    font-weight:bold;
+    transition:.3s;
+
+}
+
+.btn:hover{
+
+    background:#004a91;
+
+}
+
+.center{
+    text-align:center;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <div class="icon">🎉</div>
+
+        <h2>Booking Successful</h2>
+
+        <p>Your parking slot has been reserved.</p>
+
+    </div>
+
+    <div class="content">
+
+        <div class="message">
+
+            <p>
+                <strong>Owner Name :</strong>
+                <span th:text="${data.land.partner.partnerName}"></span>
+            </p>
+
+            <p>
+                <strong>Mobile Number :</strong>
+                <span th:text="${data.land.partner.mobileNumber}"></span>
+            </p>
+
+            <p>
+                <strong>Address :</strong>
+                <span th:text="${data.land.landName}"></span>,
+                <span th:text="${data.land.landmark}"></span>,
+                <span th:text="${data.land.city}"></span>
+            </p>
+
+            <p>
+                <strong>Location :</strong>
+
+                <a th:href="'https://www.google.com/maps/dir/?api=1&destination=' + ${data.land.latitude} + ',' + ${data.land.longitude}"
+                   target="_blank">
+
+                    🚗 Navigate
+
+                </a>
+
+            </p>
+
+        </div>
+
+        <div class="otp-box">
+
+            <span th:text="${data.otp}"></span>
+
+        </div>
+
+        <div class="note">
+
+            <strong>Instructions:</strong>
+
+            <br><br>
+
+            • Keep this OTP safe.<br>
+
+            • Reach the parking location within <strong>1 hour</strong>.<br>
+
+            • Show this OTP to the parking owner before entering.<br>
+
+            • Late arrivals may result in booking cancellation.
+
+        </div>
+
+        <div class="center">
+
+            <a href="/customer/home" class="btn">
+
+                🏠 Back to Home
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

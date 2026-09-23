@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Account Settings | GoPark</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    background:#eef2f7;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    width:500px;
+    background:white;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+    overflow:hidden;
+}
+
+.header{
+    background:#005EB8;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+.header h2{
+    margin-bottom:5px;
+}
+
+.menu{
+    padding:25px;
+}
+
+.item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px;
+    margin-bottom:15px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    transition:.3s;
+}
+
+.item:hover{
+    background:#f7f9fc;
+    transform:translateY(-2px);
+}
+
+.left{
+    display:flex;
+    align-items:center;
+}
+
+.icon{
+    font-size:28px;
+    margin-right:15px;
+}
+
+.title{
+    font-weight:bold;
+    color:#333;
+}
+
+.desc{
+    font-size:13px;
+    color:#777;
+}
+
+.btn{
+    text-decoration:none;
+    background:#005EB8;
+    color:white;
+    padding:10px 18px;
+    border-radius:6px;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#004a91;
+}
+
+.delete-btn{
+    background:#dc3545;
+}
+
+.delete-btn:hover{
+    background:#b02a37;
+}
+
+.back{
+    text-align:center;
+    padding:20px;
+    border-top:1px solid #eee;
+}
+
+.back a{
+    color:#005EB8;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.back a:hover{
+    text-decoration:underline;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h2>Account Settings</h2>
+        <p>Manage your GoPark partner account</p>
+    </div>
+
+    <div class="menu">
+
+        <div class="item">
+
+            <div class="left">
+                <div class="icon">👤</div>
+                <div>
+                    <div class="title">View Profile</div>
+                    <div class="desc">See your personal information.</div>
+                </div>
+            </div>
+
+            <a class="btn" th:href="@{/partner/details}">
+                Open
+            </a>
+
+        </div>
+
+        <div class="item">
+
+            <div class="left">
+                <div class="icon">✏️</div>
+                <div>
+                    <div class="title">Update Profile</div>
+                    <div class="desc">Edit your account details.</div>
+                </div>
+            </div>
+
+            <a class="btn" th:href="@{/partner/update}">
+                Update
+            </a>
+
+        </div>
+
+        <div class="item">
+
+            <div class="left">
+                <div class="icon">🗑️</div>
+                <div>
+                    <div class="title">Delete Account</div>
+                    <div class="desc">This action cannot be undone.</div>
+                </div>
+            </div>
+
+            <a class="btn delete-btn"
+               th:href="@{/partner/delete}"
+               onclick="return confirm('Are you sure you want to delete your account?');">
+                Delete
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="back">
+        <a th:href="@{/partner/Home}">← Back to Dashboard</a>
+    </div>
+
+</div>
+
+</body>
+</html>

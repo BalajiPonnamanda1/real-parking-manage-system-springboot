@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Partner Portal | GoPark</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:#eef2f7;
+}
+
+.card{
+    width:400px;
+    background:white;
+    padding:40px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+}
+
+.logo{
+    font-size:55px;
+    margin-bottom:10px;
+}
+
+h2{
+    color:#005EB8;
+    margin-bottom:10px;
+}
+
+p{
+    color:#666;
+    margin-bottom:30px;
+    line-height:1.5;
+}
+
+.btn{
+    display:block;
+    width:100%;
+    padding:14px;
+    text-decoration:none;
+    border-radius:8px;
+    margin-top:15px;
+    font-size:16px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.login{
+    background:#005EB8;
+    color:white;
+}
+
+.login:hover{
+    background:#004a91;
+}
+
+.signup{
+    border:2px solid #005EB8;
+    color:#005EB8;
+    background:white;
+}
+
+.signup:hover{
+    background:#005EB8;
+    color:white;
+}
+
+.footer{
+    margin-top:25px;
+    color:#999;
+    font-size:13px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+    <div class="logo">🅿️</div>
+
+    <h2>Partner Portal</h2>
+
+    <p>
+        Manage your parking spaces, bookings, vehicles,
+        and customer requests through your GoPark dashboard.
+    </p>
+
+    <a class="btn login" th:href="@{/partnerlogin}">
+        Login
+    </a>
+
+    <a class="btn signup" th:href="@{/partnersignIn}">
+        Create Partner Account
+    </a>
+
+    <div class="footer">
+        GoPark Parking Management System
+    </div>
+
+</div>
+
+</body>
+</html>

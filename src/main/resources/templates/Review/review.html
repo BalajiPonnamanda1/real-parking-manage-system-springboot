@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Reviews | GoPark</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    background:#eef2f7;
+}
+
+.header{
+
+    background:#005EB8;
+    color:white;
+    text-align:center;
+    padding:25px;
+
+}
+
+.header h2{
+
+    margin-bottom:8px;
+
+}
+
+.header p{
+
+    opacity:.9;
+
+}
+
+.container{
+
+    width:90%;
+    max-width:1000px;
+    margin:50px auto;
+
+}
+
+.cards{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+
+}
+
+.card{
+
+    background:white;
+    padding:35px;
+    text-align:center;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.icon{
+
+    font-size:55px;
+    margin-bottom:20px;
+
+}
+
+.card h3{
+
+    color:#005EB8;
+    margin-bottom:12px;
+
+}
+
+.card p{
+
+    color:#666;
+    margin-bottom:25px;
+    line-height:1.6;
+
+}
+
+.btn{
+
+    display:inline-block;
+    text-decoration:none;
+    background:#005EB8;
+    color:white;
+    padding:12px 24px;
+    border-radius:8px;
+    font-weight:bold;
+    transition:.3s;
+
+}
+
+.btn:hover{
+
+    background:#004a91;
+
+}
+
+.footer{
+
+    text-align:center;
+    margin-top:40px;
+
+}
+
+.footer a{
+
+    text-decoration:none;
+    background:#005EB8;
+    color:white;
+    padding:12px 25px;
+    border-radius:8px;
+    font-weight:bold;
+
+}
+
+.footer a:hover{
+
+    background:#004a91;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h2>Reviews Dashboard</h2>
+
+<p>Manage your parking reviews and explore customer feedback.</p>
+
+</div>
+
+<div class="container">
+
+<div class="cards">
+
+<div class="card">
+
+<div class="icon">✍️</div>
+
+<h3>Add Review</h3>
+
+<p>Share your experience after completing your parking session.</p>
+
+<a href="/review/check" class="btn">
+
+Write Review
+
+</a>
+
+</div>
+
+<div class="card">
+
+<div class="icon">⭐</div>
+
+<h3>My Reviews</h3>
+
+<p>View, manage, or delete the reviews you have already submitted.</p>
+
+<a href="/review/allReviews" class="btn">
+
+View Reviews
+
+</a>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+<a href="/customer/home">
+
+🏠 Home
+
+</a>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

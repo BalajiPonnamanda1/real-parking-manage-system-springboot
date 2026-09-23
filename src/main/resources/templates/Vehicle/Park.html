@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Vehicle Management | GoPark</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    background:#eef2f7;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.container{
+    width:500px;
+    background:#fff;
+    border-radius:12px;
+    padding:35px;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+}
+
+h2{
+    text-align:center;
+    color:#005EB8;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:30px;
+}
+
+.menu{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.menu a{
+    text-decoration:none;
+    text-align:center;
+    padding:15px;
+    background:#005EB8;
+    color:white;
+    border-radius:8px;
+    font-size:16px;
+    transition:.3s;
+}
+
+.menu a:hover{
+    background:#004a91;
+    transform:translateY(-2px);
+}
+
+.home{
+    margin-top:25px;
+}
+
+.home a{
+    display:block;
+    text-decoration:none;
+    text-align:center;
+    padding:14px;
+    background:#28a745;
+    color:white;
+    border-radius:8px;
+    font-size:16px;
+    transition:.3s;
+}
+
+.home a:hover{
+    background:#218838;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Vehicle Management</h2>
+
+    <p class="subtitle">
+        Manage your parking vehicles and available slots.
+    </p>
+
+    <div class="menu">
+
+        <a th:href="@{/vehicle/add}">
+            ➕ Add Vehicle
+        </a>
+
+        <a th:href="@{/vehicle/show}">
+            🚗 View Vehicles
+        </a>
+
+        <a th:href="@{/vehicle/delete}">
+            🗑 Delete Vehicle
+        </a>
+
+        <a th:href="@{/vehicle/park}">
+            🅿 Parking Slots
+        </a>
+
+    </div>
+
+    <div class="home">
+        <a th:href="@{/partner/Home}">
+            ⬅ Back to Home
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

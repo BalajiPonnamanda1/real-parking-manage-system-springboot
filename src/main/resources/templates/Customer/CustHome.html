@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Customer Dashboard | GoPark</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    background:#eef2f7;
+}
+
+.header{
+
+    background:#005EB8;
+    color:white;
+    padding:25px;
+    text-align:center;
+
+}
+
+.header h2{
+
+    margin-bottom:8px;
+
+}
+
+.header p{
+
+    opacity:.9;
+
+}
+
+.container{
+
+    width:90%;
+    max-width:1200px;
+    margin:40px auto;
+
+}
+
+.cards{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+
+}
+
+.card{
+
+    background:white;
+    border-radius:15px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.icon{
+
+    font-size:55px;
+    margin-bottom:15px;
+
+}
+
+.card h3{
+
+    color:#005EB8;
+    margin-bottom:12px;
+
+}
+
+.card p{
+
+    color:#666;
+    margin-bottom:20px;
+    line-height:1.6;
+
+}
+
+.btn{
+
+    display:inline-block;
+    text-decoration:none;
+    background:#005EB8;
+    color:white;
+    padding:12px 24px;
+    border-radius:8px;
+    font-weight:bold;
+    transition:.3s;
+
+}
+
+.btn:hover{
+
+    background:#004a91;
+
+}
+
+.footer{
+
+    text-align:center;
+    margin:40px 0;
+
+}
+
+.footer a{
+
+    text-decoration:none;
+    color:#005EB8;
+    font-weight:bold;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+    <h2>Customer Dashboard</h2>
+
+    <p>Welcome to GoPark Parking Management System</p>
+
+</div>
+
+<div class="container">
+
+<div class="cards">
+
+    <div class="card">
+
+        <div class="icon">🚗</div>
+
+        <h3>Book Parking</h3>
+
+        <p>Search available parking slots and reserve your parking space.</p>
+
+        <a href="/customer/booking" class="btn">
+            Book Now
+        </a>
+
+    </div>
+
+    <div class="card">
+
+        <div class="icon">⭐</div>
+
+        <h3>Reviews</h3>
+
+        <p>Read customer reviews and ratings before selecting a parking location.</p>
+
+        <a href="/review/" class="btn">
+            View Reviews
+        </a>
+
+    </div>
+
+    <div class="card">
+
+        <div class="icon">❌</div>
+
+        <h3>Cancel Booking</h3>
+
+        <p>Cancel your reserved parking slot using your booking OTP.</p>
+
+        <a href="/customer/cancelSlot" class="btn">
+            Cancel Slot
+        </a>
+
+    </div>
+
+</div>
+
+<div class="footer">
+
+    <a href="/customer/profile">
+        👤 My Profile
+    </a>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

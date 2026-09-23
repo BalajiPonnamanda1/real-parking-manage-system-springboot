@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Customer Validation | GoPark</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    background:#eef2f7;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    width:450px;
+    background:#fff;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+    overflow:hidden;
+}
+
+.header{
+    background:#005EB8;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+.header h2{
+    margin-bottom:8px;
+}
+
+.header p{
+    font-size:14px;
+    opacity:.9;
+}
+
+.content{
+    padding:35px;
+}
+
+.menu-btn{
+    display:block;
+    width:100%;
+    text-decoration:none;
+    text-align:center;
+    padding:15px;
+    margin-bottom:18px;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.in{
+    background:#00A651;
+    color:white;
+}
+
+.in:hover{
+    background:#008d44;
+}
+
+.out{
+    background:#e67e22;
+    color:white;
+}
+
+.out:hover{
+    background:#cf711b;
+}
+
+.back{
+    background:#6c757d;
+    color:white;
+}
+
+.back:hover{
+    background:#5a6268;
+}
+
+.home{
+    background:#005EB8;
+    color:white;
+}
+
+.home:hover{
+    background:#004b91;
+}
+
+.footer{
+    text-align:center;
+    padding:15px;
+    color:#777;
+    font-size:13px;
+    border-top:1px solid #eee;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h2>Customer Validation</h2>
+        <p>Manage customer entry and exit using OTP verification.</p>
+    </div>
+
+    <div class="content">
+
+        <a href="/valid/in" class="menu-btn in">
+            🚗 Customer Check-In
+        </a>
+
+        <a href="/valid/out" class="menu-btn out">
+            🚘 Customer Check-Out
+        </a>
+
+        <a href="/valid/" class="menu-btn back">
+            ← Back
+        </a>
+
+        <a href="/partner/Home" class="menu-btn home">
+            🏠 Home
+        </a>
+
+    </div>
+
+    <div class="footer">
+        GoPark Parking Management System
+    </div>
+
+</div>
+
+</body>
+</html>

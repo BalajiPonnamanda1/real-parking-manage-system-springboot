@@ -1,0 +1,380 @@
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Update Review | GoPark</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #eef5ff, #f8fbff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        /* Main Card */
+
+        .review-card {
+            width: 100%;
+            max-width: 560px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 15px 45px rgba(0, 70, 140, 0.12);
+            overflow: hidden;
+        }
+
+        /* Header */
+
+        .header {
+            background: linear-gradient(135deg, #005EB8, #0074d9);
+            color: white;
+            padding: 32px;
+            text-align: center;
+        }
+
+        .header-icon {
+            width: 58px;
+            height: 58px;
+            margin: 0 auto 15px;
+            background: rgba(255, 255, 255, 0.18);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 26px;
+        }
+
+        .header h1 {
+            font-size: 25px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Content */
+
+        .content {
+            padding: 35px;
+        }
+
+        .booking-info {
+            background: #f5f9ff;
+            border: 1px solid #e0ebf8;
+            border-radius: 10px;
+            padding: 12px 15px;
+            margin-bottom: 25px;
+            font-size: 13px;
+            color: #667085;
+        }
+
+        .booking-info strong {
+            color: #005EB8;
+        }
+
+        /* Form */
+
+        .form-group {
+            margin-bottom: 23px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 9px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #344054;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 130px;
+            padding: 14px 15px;
+            border: 1px solid #d0d5dd;
+            border-radius: 10px;
+            resize: vertical;
+            font-size: 15px;
+            line-height: 1.5;
+            color: #344054;
+            background: #ffffff;
+            transition: 0.2s;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #005EB8;
+            box-shadow: 0 0 0 3px rgba(0, 94, 184, 0.10);
+        }
+
+        textarea::placeholder {
+            color: #98a2b3;
+        }
+
+        /* Rating */
+
+        select {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #d0d5dd;
+            border-radius: 10px;
+            background: white;
+            color: #344054;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #005EB8;
+            box-shadow: 0 0 0 3px rgba(0, 94, 184, 0.10);
+        }
+
+        /* Buttons */
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .update-btn {
+            flex: 1;
+            border: none;
+            border-radius: 10px;
+            padding: 13px;
+            background: #005EB8;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .update-btn:hover {
+            background: #004a91;
+            transform: translateY(-1px);
+        }
+
+        .cancel-btn {
+            flex: 1;
+            text-align: center;
+            text-decoration: none;
+            border: 1px solid #d0d5dd;
+            border-radius: 10px;
+            padding: 12px;
+            background: white;
+            color: #475467;
+            font-size: 15px;
+            font-weight: 600;
+            transition: 0.25s;
+        }
+
+        .cancel-btn:hover {
+            background: #f9fafb;
+        }
+
+        /* Footer */
+
+        .footer {
+            text-align: center;
+            padding: 0 35px 28px;
+            color: #98a2b3;
+            font-size: 12px;
+        }
+
+        /* Mobile */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .content {
+                padding: 25px;
+            }
+
+            .header {
+                padding: 25px 20px;
+            }
+
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="review-card">
+
+
+    <!-- Header -->
+
+    <div class="header">
+
+        <div class="header-icon">
+            ✎
+        </div>
+
+        <h1>Update Your Review</h1>
+
+        <p>Share your updated parking experience</p>
+
+    </div>
+
+
+    <!-- Form Content -->
+
+    <div class="content">
+
+
+        <!-- Review Information -->
+
+        <div class="booking-info">
+
+            Review ID:
+            <strong th:text="${data.reviewId}">
+                0
+            </strong>
+
+        </div>
+
+
+        <form th:action="@{/review/updated}" method="post">
+
+
+            <!-- Hidden Review ID -->
+
+            <input type="hidden"
+                   name="reviewId"
+                   th:value="${data.reviewId}">
+
+
+            <!-- Review -->
+
+            <div class="form-group">
+
+                <label for="review">
+                    Your Review
+                </label>
+
+                <textarea
+                    id="review"
+                    name="review"
+                    maxlength="250"
+                    placeholder="Tell us about your parking experience..."
+                    th:text="${data.review}"
+                    required></textarea>
+
+            </div>
+
+
+            <!-- Rating -->
+
+            <div class="form-group">
+
+                <label for="rating">
+                    Your Rating
+                </label>
+
+                <select id="rating"
+                        name="rating"
+                        required>
+
+                    <option value="5"
+                            th:selected="${data.rating == 5}">
+                        ⭐⭐⭐⭐⭐ Excellent
+                    </option>
+
+                    <option value="4"
+                            th:selected="${data.rating == 4}">
+                        ⭐⭐⭐⭐ Very Good
+                    </option>
+
+                    <option value="3"
+                            th:selected="${data.rating == 3}">
+                        ⭐⭐⭐ Good
+                    </option>
+
+                    <option value="2"
+                            th:selected="${data.rating == 2}">
+                        ⭐⭐ Fair
+                    </option>
+
+                    <option value="1"
+                            th:selected="${data.rating == 1}">
+                        ⭐ Poor
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Buttons -->
+
+            <div class="button-group">
+
+                <a href="javascript:history.back()"
+                   class="cancel-btn">
+                    Cancel
+                </a>
+
+                <button type="submit"
+                        class="update-btn">
+                    Update Review
+                </button>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+
+    <!-- Footer -->
+
+    <div class="footer">
+
+        Your feedback helps us improve GoPark.
+
+    </div>
+
+
+</div>
+
+</body>
+
+</html>
+```

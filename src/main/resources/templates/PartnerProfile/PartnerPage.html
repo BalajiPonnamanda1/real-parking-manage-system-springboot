@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Partner Dashboard | GoPark</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    background:#eef2f7;
+}
+
+header{
+    background:#005EB8;
+    color:white;
+    padding:20px 40px;
+    text-align:center;
+    box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+header h1{
+    font-size:30px;
+}
+
+header p{
+    margin-top:5px;
+    font-size:15px;
+}
+
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:40px auto;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    border-radius:12px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+.icon{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.card h2{
+    color:#005EB8;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#666;
+    margin-bottom:20px;
+    line-height:1.5;
+}
+
+.card a{
+    display:inline-block;
+    text-decoration:none;
+    background:#005EB8;
+    color:white;
+    padding:10px 22px;
+    border-radius:8px;
+    transition:.3s;
+}
+
+.card a:hover{
+    background:#004a91;
+}
+
+.footer{
+    text-align:center;
+    margin:40px;
+    color:#777;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>GoPark Partner Dashboard</h1>
+
+    <p>Manage your parking business efficiently.</p>
+
+</header>
+
+<div class="container">
+
+    <div class="grid">
+
+        <div class="card">
+
+            <div class="icon">👤</div>
+
+            <h2>Profile</h2>
+
+            <p>
+                View and update your partner profile.
+            </p>
+
+            <a th:href="@{/partner/profile}">
+                Open
+            </a>
+
+        </div>
+
+        <div class="card">
+
+            <div class="icon">🏞️</div>
+
+            <h2>Land Management</h2>
+
+            <p>
+                Add, update and manage your parking lands.
+            </p>
+
+            <a th:href="@{/land/lands}">
+                Open
+            </a>
+
+        </div>
+
+        <div class="card">
+
+            <div class="icon">🚗</div>
+
+            <h2>Vehicle Management</h2>
+
+            <p>
+                Manage vehicle types, slots and pricing.
+            </p>
+
+            <a th:href="@{/vehicle/}">
+                Open
+            </a>
+
+        </div>
+
+        <div class="card">
+
+            <div class="icon">✅</div>
+
+            <h2>OTP Validation</h2>
+
+            <p>
+                Validate customer OTP and start parking.
+            </p>
+
+            <a th:href="@{/valid/}">
+                Open
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="footer">
+
+    © 2026 GoPark Parking Management System
+
+</div>
+
+</body>
+
+</html>

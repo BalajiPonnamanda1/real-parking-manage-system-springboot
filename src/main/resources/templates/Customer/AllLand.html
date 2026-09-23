@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Available Parking | GoPark</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    background:#eef2f7;
+    padding:40px;
+}
+
+.container{
+    width:95%;
+    max-width:1500px;
+    margin:auto;
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+}
+
+.header{
+    background:#005EB8;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+.header h2{
+    margin-bottom:8px;
+}
+
+.header p{
+    opacity:.9;
+}
+
+.table-container{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#005EB8;
+    color:white;
+    padding:14px;
+    font-size:15px;
+}
+
+td{
+    padding:14px;
+    text-align:center;
+    border-bottom:1px solid #ddd;
+}
+
+tr:nth-child(even){
+    background:#f8fbff;
+}
+
+tr:hover{
+    background:#eef6ff;
+}
+
+.available{
+    color:#00A651;
+    font-weight:bold;
+}
+
+.full{
+    color:#d32f2f;
+    font-weight:bold;
+}
+
+.book-btn{
+
+    display:inline-block;
+    text-decoration:none;
+    background:#00A651;
+    color:white;
+    padding:10px 18px;
+    border-radius:6px;
+    font-weight:bold;
+    transition:.3s;
+
+}
+
+.book-btn:hover{
+    background:#008d44;
+}
+
+.review-btn{
+
+    display:inline-block;
+    text-decoration:none;
+    background:#ff9800;
+    color:white;
+    padding:10px 18px;
+    border-radius:6px;
+    font-weight:bold;
+    transition:.3s;
+
+}
+
+.review-btn:hover{
+    background:#e68900;
+}
+
+.footer{
+
+    padding:25px;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+
+}
+
+.footer a{
+
+    text-decoration:none;
+    background:#005EB8;
+    color:white;
+    padding:12px 25px;
+    border-radius:8px;
+    font-weight:bold;
+    transition:.3s;
+
+}
+
+.footer a:hover{
+
+    background:#004a91;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<h2>Available Parking Slots</h2>
+
+<p>Select your preferred parking location and reserve your slot.</p>
+
+</div>
+
+<div class="table-container">
+
+<table>
+
+<tr>
+
+<th>Owner</th>
+<th>Vehicle</th>
+<th>Location</th>
+<th>Total Slots</th>
+<th>Available</th>
+<th>Price / Hour</th>
+<th>Book</th>
+<th>Reviews</th>
+<th>Location</th>
+
+</tr>
+
+<tr th:each="p : ${data}">
+
+<td th:text="${p.land.partner.partnerName}"></td>
+
+<td th:text="${p.vehicleType}"></td>
+
+<td th:text="${p.land.landName}"></td>
+
+<td th:text="${p.totalSlots}"></td>
+
+<td>
+
+<span class="available"
+      th:if="${p.availableSlots>0}"
+      th:text="${p.availableSlots}">
+</span>
+
+<span class="full"
+      th:if="${p.availableSlots==0}">
+FULL
+</span>
+
+</td>
+
+<td th:text="'₹ '+${p.pricePerHour}"></td>
+
+<td>
+
+<a class="book-btn"
+   th:if="${p.availableSlots>0}"
+   th:href="@{/customer/slot/{id}(id=${p.vehicleId})}">
+Book Now
+</a>
+
+<span class="full"
+      th:if="${p.availableSlots==0}">
+Not Available
+</span>
+
+</td>
+
+<td>
+
+<a class="review-btn"
+   th:href="@{/customer/reviews/{id}(id=${p.vehicleId})}">
+Reviews
+</a>
+
+</td>
+
+<td>
+	<a class="review-btn"
+	th:href="'https://www.google.com/maps/dir/?api=1&destination=' + ${p.land.latitude} + ',' + ${p.land.longitude}"
+	   target="_blank">
+	    🚗 Navigate
+	</a>
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div class="footer">
+
+<a href="/customer/profile">
+👤 Profile
+</a>
+
+<a href="/customer/home">
+🏠 Home
+</a>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

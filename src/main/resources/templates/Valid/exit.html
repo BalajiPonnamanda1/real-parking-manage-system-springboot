@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Payment Details | GoPark</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    background:#eef2f7;
+    padding:40px;
+}
+
+.container{
+    width:95%;
+    max-width:1400px;
+    margin:auto;
+    background:white;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+    overflow:hidden;
+}
+
+.header{
+    background:#005EB8;
+    color:white;
+    padding:25px;
+    text-align:center;
+}
+
+.header h2{
+    margin-bottom:5px;
+}
+
+.header p{
+    opacity:.9;
+}
+
+.table-container{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#005EB8;
+    color:white;
+    padding:14px;
+    font-size:15px;
+}
+
+td{
+    padding:14px;
+    text-align:center;
+    border-bottom:1px solid #ddd;
+}
+
+tr:nth-child(even){
+    background:#f9fbfd;
+}
+
+tr:hover{
+    background:#eef6ff;
+}
+
+.status{
+    padding:6px 14px;
+    border-radius:20px;
+    color:white;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.completed{
+    background:#00A651;
+}
+
+.booked{
+    background:#ff9800;
+}
+
+.cancelled{
+    background:#d32f2f;
+}
+
+.in{
+    background:#005EB8;
+}
+
+.footer{
+    padding:25px;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+}
+
+.footer a{
+    text-decoration:none;
+    background:#005EB8;
+    color:white;
+    padding:12px 25px;
+    border-radius:8px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.footer a:hover{
+    background:#004a91;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h2>Payment Details</h2>
+        <p>Parking booking and payment history</p>
+    </div>
+
+    <div class="table-container">
+
+        <table>
+
+            <tr>
+                <th>Customer</th>
+                <th>Parking Area</th>
+                <th>Vehicle</th>
+                <th>Vehicle Number</th>
+                <th>Check-In</th>
+                <th>Check-Out</th>
+                <th>Amount</th>
+                <th>Status</th>
+            </tr>
+
+            <tr th:each="p : ${data}">
+
+                <td th:text="${p.customer.customerName}"></td>
+
+                <td th:text="${p.land.landName}"></td>
+
+                <td th:text="${p.vehicle.vehicleType}"></td>
+
+                <td th:text="${p.vehicleNumber}"></td>
+
+                <td th:text="${#temporals.format(p.inTime,'dd-MM-yyyy HH:mm')}"></td>
+
+                <td th:text="${p.outTime!=null ? #temporals.format(p.outTime,'dd-MM-yyyy HH:mm') : '--'}"></td>
+
+                <td th:text="'₹ ' + ${p.amount}"></td>
+
+                <td>
+
+                    <span class="status completed"
+                          th:if="${p.status=='COMPLETED'}"
+                          th:text="${p.status}">
+                    </span>
+
+                    <span class="status booked"
+                          th:if="${p.status=='BOOKED'}"
+                          th:text="${p.status}">
+                    </span>
+
+                    <span class="status in"
+                          th:if="${p.status=='IN'}"
+                          th:text="${p.status}">
+                    </span>
+
+                    <span class="status cancelled"
+                          th:if="${p.status=='CANCELLED'}"
+                          th:text="${p.status}">
+                    </span>
+
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+    <div class="footer">
+
+        <a href="/partner/Home">
+            🏠 Home
+        </a>
+
+        <a href="/partner/valid/">
+            ← Back
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

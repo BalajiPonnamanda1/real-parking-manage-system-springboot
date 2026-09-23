@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Add Review | GoPark</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    background:#eef2f7;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.container{
+
+    width:500px;
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+
+}
+
+.header{
+
+    background:#005EB8;
+    color:white;
+    text-align:center;
+    padding:25px;
+
+}
+
+.header h2{
+
+    margin-bottom:8px;
+
+}
+
+.header p{
+
+    opacity:.9;
+
+}
+
+.content{
+
+    padding:35px;
+
+}
+
+.input-group{
+
+    margin-bottom:20px;
+
+}
+
+.input-group label{
+
+    display:block;
+    margin-bottom:8px;
+    font-weight:bold;
+    color:#333;
+
+}
+
+textarea{
+
+    width:100%;
+    height:120px;
+    resize:none;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+
+}
+
+textarea:focus{
+
+    outline:none;
+    border-color:#005EB8;
+    box-shadow:0 0 6px rgba(0,94,184,.25);
+
+}
+
+select{
+
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+
+}
+
+select:focus{
+
+    outline:none;
+    border-color:#005EB8;
+
+}
+
+button{
+
+    width:100%;
+    padding:13px;
+    border:none;
+    border-radius:8px;
+    background:#005EB8;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+
+}
+
+button:hover{
+
+    background:#004a91;
+
+}
+
+.footer{
+
+    text-align:center;
+    margin-top:20px;
+
+}
+
+.footer a{
+
+    text-decoration:none;
+    color:#005EB8;
+    font-weight:bold;
+
+}
+
+.footer a:hover{
+
+    text-decoration:underline;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<h2>Share Your Experience</h2>
+
+<p>Your feedback helps other customers choose better parking locations.</p>
+
+</div>
+
+<div class="content">
+
+<form action="/review/added" method="post">
+
+<input type="hidden"
+       name="bookingId"
+       th:value="${data}">
+
+<div class="input-group">
+
+<label>Your Review</label>
+
+<textarea
+name="review"
+maxlength="250"
+placeholder="Write your experience..."
+required></textarea>
+
+</div>
+
+<div class="input-group">
+
+<label>Rating</label>
+
+<select name="rating" required>
+
+<option value="">Select Rating</option>
+
+<option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+
+<option value="4">⭐⭐⭐⭐ Very Good</option>
+
+<option value="3">⭐⭐⭐ Good</option>
+
+<option value="2">⭐⭐ Fair</option>
+
+<option value="1">⭐ Poor</option>
+
+</select>
+
+</div>
+
+<button type="submit">
+
+⭐ Submit Review
+
+</button>
+
+</form>
+
+<div class="footer">
+
+<a href="javascript:history.back()">
+
+← Back
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Partner Login | GoPark</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:#eef2f7;
+}
+
+.container{
+    width:400px;
+    background:white;
+    padding:35px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+}
+
+.error-box{
+    background:#ffe6e6;
+    color:#c62828;
+    border:1px solid #f5bcbc;
+    padding:12px;
+    border-radius:8px;
+    margin-bottom:20px;
+    text-align:center;
+    font-size:14px;
+    animation:fadeIn .3s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(-8px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+h2{
+    text-align:center;
+    color:#005EB8;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:25px;
+}
+
+.error{
+    color:red;
+    text-align:center;
+    margin-bottom:15px;
+}
+
+.input-group{
+    margin-bottom:18px;
+}
+
+.input-group label{
+    display:block;
+    margin-bottom:6px;
+    font-weight:600;
+    color:#333;
+}
+
+.input-group input{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+}
+
+.input-group input:focus{
+    outline:none;
+    border-color:#005EB8;
+    box-shadow:0 0 5px rgba(0,94,184,.3);
+}
+
+.show-password{
+    display:flex;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.show-password input{
+    width:auto;
+    margin-right:8px;
+}
+
+button{
+    width:100%;
+    padding:13px;
+    background:#005EB8;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:#004a91;
+}
+
+.footer{
+    text-align:center;
+    margin-top:20px;
+}
+
+.footer a{
+    text-decoration:none;
+    color:#005EB8;
+    font-weight:bold;
+}
+
+.footer a:hover{
+    text-decoration:underline;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Partner Login</h2>
+
+    <p class="subtitle">
+        Login to manage your parking spaces.
+    </p>
+
+    <p class="error" th:if="${error}" th:text="${error}"></p>
+
+    <form th:action="@{/partner/loginData}" method="post">
+
+		<div class="error-box"
+		     th:if="${error}"
+		     th:text="${error}">
+		</div>
+        <div class="input-group">
+            <label>Mobile Number</label>
+            <input
+                type="text"
+                id="mobile"
+                name="mobileNumber"
+                maxlength="10"
+                placeholder="Enter Mobile Number"
+                required>
+        </div>
+
+        <div class="input-group">
+            <label>Password</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter Password"
+                required>
+        </div>
+
+        <div class="show-password">
+            <input type="checkbox" id="showPassword">
+            <label for="showPassword">Show Password</label>
+        </div>
+
+        <button type="submit">Login</button>
+
+    </form>
+
+    <div class="footer">
+        Don't have a partner account?
+        <a th:href="@{/partnersignIn}">
+            Register Now
+        </a>
+    </div>
+
+</div>
+
+<script>
+
+// Mobile Number Validation
+document.getElementById("mobile").addEventListener("input", function () {
+    this.value = this.value.replace(/[^0-9]/g, '');
+});
+
+// Show / Hide Password
+document.getElementById("showPassword").addEventListener("change", function () {
+
+    const password = document.getElementById("password");
+
+    password.type = this.checked ? "text" : "password";
+
+});
+
+</script>
+
+</body>
+</html>

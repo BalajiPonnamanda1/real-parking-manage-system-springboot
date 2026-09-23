@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Partner Dashboard | GoPark</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    background:#eef2f7;
+}
+
+.header{
+    background:#005EB8;
+    color:white;
+    padding:20px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.header h2{
+    font-size:28px;
+}
+
+.header p{
+    font-size:16px;
+}
+
+.container{
+    width:90%;
+    max-width:1000px;
+    margin:40px auto;
+}
+
+.welcome{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    margin-bottom:30px;
+}
+
+.welcome h3{
+    color:#005EB8;
+    margin-bottom:8px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    border-radius:12px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+.card h3{
+    color:#005EB8;
+    margin-bottom:15px;
+}
+
+.card a{
+    display:inline-block;
+    margin-top:10px;
+    padding:10px 20px;
+    background:#005EB8;
+    color:white;
+    text-decoration:none;
+    border-radius:6px;
+}
+
+.card a:hover{
+    background:#004a91;
+}
+
+.footer{
+    text-align:center;
+    margin-top:40px;
+    color:#666;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+    <h2>GoPark Partner</h2>
+
+    <p th:text="'Welcome, ' + ${msg}"></p>
+
+</div>
+
+<div class="container">
+
+    <div class="welcome">
+        <h3>Partner Dashboard</h3>
+        <p>
+            Manage your lands, parking slots, profile, and bookings from one place.
+        </p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Add Land</h3>
+            <p>Register a new parking location.</p>
+            <a th:href="@{/addLand}">Open</a>
+        </div>
+
+        <div class="card">
+            <h3>Delete Land</h3>
+            <p>Remove an existing parking location.</p>
+            <a th:href="@{/removeLand}">Open</a>
+        </div>
+
+        <div class="card">
+            <h3>Update Land</h3>
+            <p>Edit parking details and pricing.</p>
+            <a th:href="@{/changedata}">Open</a>
+        </div>
+
+        <div class="card">
+            <h3>My Profile</h3>
+            <p>View and update your profile.</p>
+            <a th:href="@{/profile}">Open</a>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        © 2026 GoPark Parking Management System
+    </div>
+
+</div>
+
+</body>
+</html>

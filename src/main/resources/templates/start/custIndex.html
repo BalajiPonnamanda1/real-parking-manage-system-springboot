@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Customer Portal | GoPark</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:#f5f7fb;
+
+}
+
+.card{
+
+    width:380px;
+    background:white;
+    padding:40px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
+
+}
+
+h2{
+
+    color:#005EB8;
+    margin-bottom:15px;
+
+}
+
+p{
+
+    color:#666;
+    margin-bottom:35px;
+
+}
+
+a{
+
+    display:block;
+    width:100%;
+    text-decoration:none;
+    padding:14px;
+    margin-top:15px;
+    border-radius:8px;
+    font-size:17px;
+    transition:.3s;
+
+}
+
+.login{
+
+    background:#005EB8;
+    color:white;
+
+}
+
+.login:hover{
+
+    background:#004a91;
+
+}
+
+.signup{
+
+    background:white;
+    color:#005EB8;
+    border:2px solid #005EB8;
+
+}
+
+.signup:hover{
+
+    background:#005EB8;
+    color:white;
+
+}
+
+.footer{
+
+    margin-top:25px;
+    font-size:13px;
+    color:#999;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+    <h2>Welcome to GoPark</h2>
+
+    <p>
+        Find and book parking spaces quickly and securely.
+    </p>
+
+    <a class="login" th:href="@{/customer/login}">
+        Login
+    </a>
+
+    <a class="signup" th:href="@{/customer/signIn}">
+        Create Account
+    </a>
+
+    <div class="footer">
+        Smart Parking Management System
+    </div>
+
+</div>
+
+</body>
+
+</html>
